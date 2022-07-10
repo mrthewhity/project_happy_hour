@@ -4,8 +4,6 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 
 
-// part 'countries.g.dart';
-
 
 class Name {
   String common;
@@ -44,17 +42,20 @@ class Country {
   String region;
   String subregion;
   double area;
+  int population;
   List<String> capital;
   Map<String, dynamic> currencies;
   Map<String, dynamic> languages;
   Coordinates coordinates_capital;
   String flag_link;
 
+
   Country({
    required this.name,
    required this.region,
    required this.subregion,
    required this.area,
+   required this.population,
    required this.capital,
    required this.currencies,
    required this.languages,
@@ -70,6 +71,7 @@ class Country {
       region: json["region"],
       subregion: json["subregion"],
       area: json["area"],
+      population: json["population"],
       capital: json["capital"].cast<String>(),
       currencies: json["currencies"],
       languages: json["languages"],
