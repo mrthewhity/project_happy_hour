@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -80,8 +81,6 @@ class Country {
 
     );
   }
-
-
 }
 
 
