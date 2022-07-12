@@ -3,9 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 import 'package:project_hp/models/countries.dart';
-import 'package:project_hp/utils/amountFct.dart';
-
-
+import 'package:project_hp/utils/amount_fct.dart';
+import 'package:project_hp/utils/themes.dart';
 
 
 class detailsCountry extends StatelessWidget {
@@ -18,9 +17,11 @@ class detailsCountry extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: kWhiteColor,
         appBar: DetailCountryAppBar(),
-        body: BShowInfo(country:country)
-      
+        body: DetailCountryBody(
+          country:country
+        )
       ),
     );
   }
@@ -38,13 +39,12 @@ class DetailCountryAppBar extends StatefulWidget implements PreferredSizeWidget 
   _DetailCountryState createState() => _DetailCountryState();
   }
 
-
 class _DetailCountryState extends State<DetailCountryAppBar>{
   
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: kWhiteColor,
       elevation: 0.0,
       leading: Container(
         padding: const EdgeInsets.only(left: 10.0),
@@ -53,12 +53,12 @@ class _DetailCountryState extends State<DetailCountryAppBar>{
           style: ElevatedButton.styleFrom(
             elevation: 0,
               padding: EdgeInsets.zero,
-              primary:  Colors.transparent,
-              onPrimary: Color(0xFFEF5350),
+              primary:  kTransparentColor,
+              onPrimary: kRedAppBarColor,
               shape: CircleBorder(),
           ),
           onPressed: () {Navigator.of(context ,rootNavigator: true).pop();},
-          child: Icon(
+          child: const Icon(
             Icons.arrow_back_ios,
             size: 20,
           ),
@@ -70,32 +70,25 @@ class _DetailCountryState extends State<DetailCountryAppBar>{
 
 
 
-
-
-
-
-
-class BShowInfo extends StatefulWidget {
+class DetailCountryBody extends StatefulWidget {
   final Country? country;
-  const BShowInfo({Key? key,this.country}) : super(key: key);
+  const DetailCountryBody({Key? key,this.country}) : super(key: key);
 
   @override
-  State<BShowInfo> createState() => _BShowInfoState();
+  State<DetailCountryBody> createState() => _DetailCountryBodyState();
 }
 
-class _BShowInfoState extends State<BShowInfo> {
+class _DetailCountryBodyState extends State<DetailCountryBody> {
 
   @override
   Widget build(BuildContext context) {
 
 
-
     return 
     Container(
       decoration: BoxDecoration(
-        color: Colors.white
+        color: kWhiteColor
       ),
-
       child: SingleChildScrollView( 
         scrollDirection: Axis.vertical,
         child: SafeArea(  
@@ -233,7 +226,7 @@ class _BShowInfoState extends State<BShowInfo> {
                     widget.country!.languages.entries.map((entry) {
                     var w = Row(
                       children:[
-                        Icon(
+                        const Icon(
                           IconData(0xef51,
                             fontFamily: 'MaterialIcons'
                           ),
@@ -294,7 +287,7 @@ class _BShowInfoState extends State<BShowInfo> {
                   widget.country!.currencies.entries.map((entry) {
                     var w = Row(
                       children:[
-                        Icon(
+                        const Icon(
                           IconData(0xf04dc, fontFamily: 'MaterialIcons'),
                           size: 20.0
                         ),
@@ -350,7 +343,7 @@ class _BShowInfoState extends State<BShowInfo> {
                 ),
                 child: Row(
                   children: [ 
-                    Icon(
+                    const Icon(
                       IconData(0xf05bb, fontFamily: 'MaterialIcons'),
                       size: 23.0
                     ),
@@ -403,7 +396,7 @@ class _BShowInfoState extends State<BShowInfo> {
                 ),
                 child: Row(
                   children: [ 
-                    Icon(
+                    const Icon(
                       IconData(0xeb8d, fontFamily: 'MaterialIcons'),
                       size: 23.0
                     ),
@@ -447,18 +440,11 @@ class _BShowInfoState extends State<BShowInfo> {
                   bottom: MediaQuery.of(context).size.height/60,
                   top: MediaQuery.of(context).size.height/60
                 ),
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(width: 1.0, 
-                      color: Colors.blue.shade50
-                    ),
-                  ),    
-                ),
                 child: Column(
                   children: <Widget> [
                     Row(
                       children: [ 
-                        Icon(
+                        const Icon(
                           IconData(0xf1af, fontFamily: 'MaterialIcons'),
                           size: 23.0
                         ),
@@ -477,7 +463,7 @@ class _BShowInfoState extends State<BShowInfo> {
                     ),
                     Row(
                       children: [ 
-                        Icon(
+                        const Icon(
                           IconData(0xf885, fontFamily: 'MaterialIcons'),
                           size: 23.0
                         ),

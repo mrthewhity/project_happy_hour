@@ -1,15 +1,15 @@
-String formatAmount(String v){
+String formatAmount(String amount){
 
   /*
   * Return a amount string with space/comma separation
   *  16578.78 -> 16,578.78
   * 
-  * params: String (v)
+  * params: String (amount)
   * return: String (priceInTextFinal)
   */
 
-    List<String> vSplit = v.split(".") ;
-    String price = vSplit[0];
+    List<String> amountSplit = amount.split(".") ;
+    String price = amountSplit[0];
     String priceInText = "";
     int counter = 0;
     for(int i = (price.length - 1);  i >= 0; i--){
@@ -27,8 +27,8 @@ String formatAmount(String v){
 
     String priceInTextFinal = priceInText.trim();
 
-    if(vSplit.length==2){
-      priceInTextFinal = priceInTextFinal+"."+vSplit[1];
+    if(amountSplit.length==2){
+      priceInTextFinal = priceInTextFinal+"."+amountSplit[1];
     }
     
     return priceInTextFinal;

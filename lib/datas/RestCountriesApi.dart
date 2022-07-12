@@ -6,11 +6,18 @@ import 'dart:convert';
 
 
 
-Future<List<Country>> fetchCountries() async { 
-  const String country_europa_api = 'https://restcountries.com/v3.1/region/europe';
+Future<List<Country>> fetchCountries(String region) async { 
+  /*
+  * fetch countries data on the site restcountries.com
+  * params: String (region)
+  * return: List<Country>
+  */
+
+
+  String countries_region_api = 'https://restcountries.com/v3.1/region/'+region;
 
   final response = await http
-      .get(Uri.parse(country_europa_api));
+      .get(Uri.parse(countries_region_api));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -22,7 +29,7 @@ Future<List<Country>> fetchCountries() async {
   } else {
     // If the server did not return a 200 OK response,
     // then throw an exception.
-    throw Exception('Failed to load album');
+    throw Exception('Failed to load');
   }
 }
 
